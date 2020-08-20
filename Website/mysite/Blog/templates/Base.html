@@ -1,0 +1,38 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'Blog/Styling.css' %}" />
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Useless</title>
+</head>
+<body>
+	<header id="main-header">
+		<div class ="container">
+			<h1>Arcane Words</h1>
+		</div>
+	</header>
+
+	<nav id ="navbar">
+		<div class ="container">
+			<a href="{% url 'Home' %}">Home</a>
+			<a href="{% url 'About' %}">About Me</a>
+			<a href="{% url 'Contact' %}">Contact</a>
+				<div class = "user">
+				<a href="#">{{ user.username }}</a>
+				</div>
+		</div>
+	</nav>
+
+{% block content %} {% endblock %}
+
+
+	<footer id="main-footer">
+		<p>Copyright &copy; 2020 My Website</p>
+	</footer>
+
+
+
+</body>
+</html>
+

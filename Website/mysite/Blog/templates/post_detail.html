@@ -1,0 +1,22 @@
+{% extends 'Base.html' %}
+
+
+{% block content %}
+	<div class="container">
+		<section id="minititle">
+			<h1>
+				{{ post.post_text }}
+			</h1>
+		</section>
+	</div>
+
+		<section class="container">
+				<p class = "description block">
+					{{ post.thoughts }}
+				</p>
+
+
+	</section>
+
+
+{% endblock %}
