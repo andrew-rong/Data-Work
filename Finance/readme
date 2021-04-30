@@ -1,3 +1,3 @@
 This is a repository for modelling various financial derivatives/theories 
 Swaps contains simulations for credit interest swaps
-Index_Simulations contains a multitude of Puts, Calls, Arithmetic and Geometric Brownian Motion as well as some analysis of Index values.
+Index_Simulations contains a multitude of Puts, Calls, Arithmetic and Geometric Brownian Motion as well as some analysis of Index values, uses the CSV Index Data
