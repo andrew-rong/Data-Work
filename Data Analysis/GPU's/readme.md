@@ -19,7 +19,10 @@ Now in the modern day, the graphics card is commonly found used for gaming, vide
 ## Tasks and Goals
 For this project we will be scraping data from the website:  https://www.techpowerup.com/gpu-specs/
 
-This website acts as a database for the numerical information on Graphics Cards. The main tasks about this project is to:
+This website acts as a database for the numerical information on Graphics Cards. 
+This is a great site as it has all important specs of a GPU, only thing is it doesn't factor in the model type, number of slots, heatsink types, manufacturuer, etc. So all in all we have some missing aspects that we can't completely account for, but regardless we want to classify the graphics cards as being "Modernized" or not. I.e. capable of being used for modern day activities such as rendering, gaming and productivity usage.
+
+The main tasks about this project is to:
 
 ### Scrape the data
 ### Clean and Process
