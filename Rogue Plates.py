@@ -8,7 +8,7 @@ url = "https://www.roguecanada.ca/rogue-mil-echo-bumper-plates-black"
 page = requests.get(url)
 soup = BeautifulSoup(page.content, 'html.parser')
 
-results = soup.find(id="super-product-table")
+results = soup.find('div', class_="grouped")
 # print(results.prettify())
 
 prod_elems = results.find_all('div', class_='grouped-item')
