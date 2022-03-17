@@ -8,11 +8,25 @@ url = "https://www.roguecanada.ca/rogue-mil-echo-bumper-plates-black"
 page = requests.get(url)
 soup = BeautifulSoup(page.content, 'html.parser')
 
-results = soup.find('div', class_="grouped")
-# print(results.prettify())
+results = soup.find('div', class_="normal view-all")
+#print(results.prettify())
 
-prod_elems = results.find_all('div', class_='grouped-item')
+packages = results.find_all('div', class_='rhpa-opts option grouped-rhpa')
+individuals = results.find_all('div', class_='rhpa-opts option grouped-rhpa hide-more')
 
+for elem in packages:
+    name_elem = elem.find('div', class_='simple-name').text
+    price_outer_class = elem.find('div', class_='product-price simple-price rhpa-child condensed').text
+    print(name_elem, price_outer_class)
+
+for elem in individuals:
+    name_elem = elem.find('div', class_='simple-name').text
+    price_outer_class = elem.find('div', class_='product-price simple-price rhpa-child condensed').text
+    print(name_elem, price_outer_class)
+
+# Updated the site so this no longer works :(
+# Plus i don't have a reference for what out of stock is now that everythings in stock...
+"""
 for elem in prod_elems:
     name_elem = elem.find('div', class_='item-name')
     price_elem = elem.find('span', class_='price')
@@ -31,4 +45,4 @@ for elem in prod_elems:
     print(name_elem.text, price_elem.text, availability)
     # the values are tags by themselves with .text it becomes strings so this can be used
 
-# Next, notify someone through email when something is in stock
+"""
