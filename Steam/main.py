@@ -8,12 +8,15 @@ from nltk.stem import PorterStemmer
 import pickle
 import nltk
 from nltk import FreqDist
+from nltk.sentiment import SentimentIntensityAnalyzer
 
 
 # nltk.download("punkt")
 # nltk.download("stopwords")
 # nltk.download('averaged_perceptron_tagger')
 # nltk.download('tagsets')
+# nltk.download('state_union') this is some random dataset about WWII
+# nltk.download('vader_lexicon')
 
 
 def get_reviews(app_id):
@@ -47,43 +50,52 @@ def get_n_reviews(app_id, n=100):
     return reviews
 
 
-# x = get_reviews('1593500')
-
-def store_reviews(csv):
-    pass
-# summary = json.dumps(x["query_summary"])
-# data = pd.json_normalize(x, 'reviews')
-
-# summary.to_csv("Summary.csv")
-# data.to_csv("Data.csv")
-
-# with open('summary.pkl', 'wb') as f:
-#     pickle.dump(summary, f)
-
-# with open('summary.pkl', 'rb') as f:
-#     loaded_dict = pickle.load(f)
+def store_reviews(initial_data):
+    summary = json.dumps(initial_data["query_summary"])
+    reviews = pd.json_normalize(initial_data, 'reviews')
+    summary.to_csv("Summary.csv")
+    reviews.to_csv("Data.csv")
+    with open('summary.pkl', 'wb') as f:
+        pickle.dump(summary, f)
+    with open('summary.pkl', 'rb') as f:
+        loaded_dict = pickle.load(f)
 
 
-data = pd.read_csv('Data.csv')
-# print(data["review"][6])
-trial = data["review"][6]
+# store_reviews(get_reviews('1593500'))
 
-tokens = word_tokenize(trial)
-print(tokens)
 
 # Filtering stop words
-stop_words = set(stopwords.words("english"))
+def remove_stop_words(unfiltered_list):
+    # Remove punctuation, for now unnecessary
+    words = [w for w in unfiltered_list if w.isalpha()]
+    stop_words = set(stopwords.words("english"))
+    filtered_list = [word.lower() for word in words if word.casefold() not in stop_words]
+    return filtered_list
 
-filtered_list = [word for word in tokens if word.casefold() not in stop_words]
 
-# Stemming
-stemmer = PorterStemmer()
+"""data = pd.read_csv('Data.csv')
+trial = data["review"][6]
+tokens = word_tokenize(trial)
+clean_words = remove_stop_words(tokens)"""
 
-# Targeting
-#type_of_word = nltk.pos_tag(filtered_list)
 
-# print(type_of_word)
+# frequency_distribution = FreqDist(clean_words)
+# print(frequency_distribution.most_common(5))
+# print(frequency_distribution.tabulate(3))    table form
+# frequency_distribution.plot(5)
 
-frequency_distribution = FreqDist(filtered_list)
-# print(frequency_distribution)
-frequency_distribution.plot(20, cumulative=True)
+
+# text_type = nltk.Text(tokens)
+# print(text_type.concordance("game", lines=5))
+# Concordance must be of type nltk.Text
+# Concordance displays sentences or words around the desired name
+
+
+all_reviews = pd.read_csv("Reviews.csv", index_col=False)
+
+# mass_test = []
+# for i in all_reviews['review']:
+
+sia = SentimentIntensityAnalyzer()
+print(sia.polarity_scores(all_reviews['review'][0]))
+# print(all_reviews['review'][0])
