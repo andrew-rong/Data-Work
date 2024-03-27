@@ -1,8 +1,8 @@
-Hi I'm Andrew Rong
+Hi
 
-I'm interested in a variety of things such as Data Analytics, Finance and Machine Learning.
+Being interested in a variety of things like Data, Finance and Machine Learning I enjoy creating small projects that put all my interests together. 
 
-Through my background of Mathematics and Statistics I specialized in Financial Mathematics and Actuarial Science, but found a passion for data. Majority of my courses is based around programming and computer science, where I learn about data manipulation, cleaning and applying different machine learning methods on top. This repository is for the projects I have done outside of school but I also have my projects done within school as well.
+Through my background of Mathematics and Statistics I specialized in Financial Mathematics and Actuarial Science, but found a passion for data along the way. Aiming for a Computer Science Minor, majority of my courses taught me about data manipulation, applying different machine learning models and general software skills. This repository is for the projects I have done outside of school but I also have my projects done within school as well.
 
 You'll find in here some projects that I have done, ranging from learning how to do small tasks like draw from APIs, to full blown analysis on datasets.
 
